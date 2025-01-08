@@ -8,7 +8,7 @@ An in-progress maximalist Reviung-inspired keyboard with RGB LED support, an OLE
 
 ![Keycap Preview](./Keycaps.png)
 
-I needed to order a few additional keycaps from FK Caps to fill out the arrow key cluster. I decided to use that was an excuse to create a whole custom keycap layout. It's based around a minimalist 3x3 pixel font. You can *just* make out the key glpyhs if you squint.
+I needed to order a few additional keycaps from [FK Caps](https://fkcaps.com/?a=FlatFootFox) to fill out the arrow key cluster. I decided to use that was an excuse to create a whole custom keycap layout. It's based around a minimalist 3x3 pixel font. You can *just* make out the key glpyhs if you squint.
 
 ## Build of Materials
 
