@@ -1,5 +1,7 @@
 # RevXL
 
+![Ergogen Preview](./Ergogen.png)
+
 ![PCB Preview](./PCB.png)
 
 An in-progress maximalist Reviung-inspired keyboard with RGB LED support, an OLED display, a rotary encoder, and a breakaway arrow cluster.
@@ -22,9 +24,9 @@ I needed to order a few additional keycaps from [FK Caps](https://fkcaps.com/?a=
 | EC11 Rotary Encoder          | 1      | $2.50 USD       | https://www.aliexpress.us/item/2255800160725313.html |
 | EC11 20x15mm Knob            | 1      | $3.00 USD       | https://www.aliexpress.us/item/2251832562966356.html |
 | MBK Glow Keycaps             | 1      | $55.00 USD      | https://lowprokb.ca/collections/keycaps/products/mbk-glow-r2-keycap-sets |
-| 6mm x 3mm x 4.3mm Pushbutton | 68     | $2.00 USD       | https://www.aliexpress.us/item/3256806449645815.html |
+| 6mm x 3mm x 4.3mm Pushbutton | 68     | $2.00 USD       | https://www.aliexpress.us/item/3256801663262003.html |
 | 4mm M2 Screws                | 8      | $1.00 USD       | https://www.aliexpress.us/item/2255801062616407.html |
-| M2 Screw Inserts             | 8      | $1.50 USD       | https://www.aliexpress.us/item/3256804349544912.html |
+| 2mm M2 Screw Inserts         | 8      | $1.50 USD       | https://www.aliexpress.us/item/3256804349544912.html |
 | Bumpons                      | 1 Pack | $1.00 USD       | https://www.aliexpress.us/item/3256804119199524.html |
 
 # References and Footprints
