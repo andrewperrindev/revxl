@@ -4,6 +4,8 @@
 
 ![PCB Preview](./PCB.png)
 
+![A 3D Printed Preview](./Preview.png)
+
 An in-progress maximalist Reviung-inspired keyboard with RGB LED support, an OLED display, a rotary encoder, and a breakaway arrow cluster.
 
 ## Custom Keycaps
@@ -25,6 +27,8 @@ I needed to order a few additional keycaps from [FK Caps](https://fkcaps.com/?a=
 | EC11 20x15mm Knob            | 1      | $3.00 USD       | https://www.aliexpress.us/item/2251832562966356.html |
 | MBK Glow Keycaps             | 1      | $55.00 USD      | https://lowprokb.ca/collections/keycaps/products/mbk-glow-r2-keycap-sets |
 | 6mm x 3mm x 4.3mm Pushbutton | 68     | $2.00 USD       | https://www.aliexpress.us/item/3256801663262003.html |
+| Machine Pins                 | 35     | $6.00 USD       | https://www.aliexpress.us/item/3256801663262003.html |
+| Machine Pin Headers          | 39     | $4.00 USD       | https://www.aliexpress.us/item/3256801663262003.html |
 | 4mm M2 Screws                | 8      | $1.00 USD       | https://www.aliexpress.us/item/2255801062616407.html |
 | 2mm M2 Screw Inserts         | 8      | $1.50 USD       | https://www.aliexpress.us/item/3256804349544912.html |
 | Bumpons                      | 1 Pack | $1.00 USD       | https://www.aliexpress.us/item/3256804119199524.html |

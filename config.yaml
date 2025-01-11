@@ -7,6 +7,11 @@ units:
   mirror_gap: 3cx-1.5
   pad: 2
   hpad: pad/2
+  cpad: 6
+  chpad: cpad/2
+  # M2 Screws
+  screwSize: 1.5
+  standoffSize: 2.5
 points:
   zones:
     matrix:
@@ -309,7 +314,7 @@ points:
         ref.aggregate.parts: [layer_layercol_layerrow, mirror_layer_layercol_layerrow]
       anchor:
         ref.aggregate.parts: [layer_layercol_layerrow, mirror_layer_layercol_layerrow]
-        shift: [-0.5cx, -0.25cy+0.5]
+        shift: [-0.5cx, -0.25cy]
         rotate: 0
       columns:
         spacecol:
@@ -410,19 +415,23 @@ points:
         del:
         ins:
 outlines:
-  raw:
+  _raw:
     - what: rectangle
       where: true
       size: [cx, cy]
-  padded:
+  _padded:
     - what: rectangle
       where: true
       size: [cx+pad, cy+pad]
-  keys:
+  _xlpadded:
+    - what: rectangle
+      where: true
+      size: [cx+cpad, cy+cpad]
+  _keys:
     - what: rectangle
       where: true
       size: [cx-0.5, cy-0.5]
-  primary:
+  _primary:
     - what: polygon
       operation: stack
       points:
@@ -434,7 +443,19 @@ outlines:
           shift: [-258, -0.5cy-hpad]
         - ref: cluster_left_ins
           shift: [-258, 0.5cy+hpad]
-  chin:
+  _xlprimary:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: cluster_right_ins
+          shift: [0.5cx+cpad/2+0.5, 0.5cy+cpad/2]
+        - ref: cluster_right_down
+          shift: [0.5cx+cpad/2+0.5, -0.5cy-cpad/2]
+        - ref: cluster_left_down
+          shift: [-260.5, -0.5cy-chpad]
+        - ref: cluster_left_ins
+          shift: [-260.5, 0.5cy+chpad]
+  _chin:
     - what: polygon
       operation: stack
       points:
@@ -462,7 +483,36 @@ outlines:
           shift: [0.5cx+hpad, -0.5cy-hpad]
         - ref: mirror_mod_super_modrow
           shift: [0.5cx+hpad, 0.5cy+hpad]
-  secondary:
+  _xlchin:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: mod_super_modrow
+          shift: [0.5cx+chpad, 0.5cy+chpad]
+        - ref: mod_super_modrow
+          shift: [0.5cx+chpad, -0.5cy-chpad]
+        - ref: layer_layercol_layerrow
+          shift: [-0.5cx-chpad, -0.5cy-chpad]
+        - ref: layer_layercol_layerrow
+          shift: [0.5cx+chpad-2, -0.5cy-chpad]
+        - ref: space_spacecol_spacerow
+          shift: [-0.5cx-chpad, -0.5cy-chpad]
+        - ref: space_spacecol_spacerow
+          shift: [0.5cx+chpad, -0.5cy-chpad]
+        - ref: mirror_space_spacecol_spacerow
+          shift: [0.5cx-chpad, -0.5cy-chpad]
+        - ref: mirror_space_spacecol_spacerow
+          shift: [-0.5cx-chpad, -0.5cy-chpad]
+        - ref: mirror_layer_layercol_layerrow
+          shift: [0.5cx+chpad-2, -0.5cy-chpad]
+        - ref: mirror_layer_layercol_layerrow
+          shift: [-0.5cx+chpad, -0.5cy-chpad]
+        - ref: mirror_mod_super_modrow
+          shift: [0.5cx+chpad, -0.5cy-chpad]
+        - ref: mirror_mod_super_modrow
+          shift: [0.5cx+chpad, 0.5cy+chpad]
+      fillet: 2
+  _secondary:
     - what: polygon
       operation: stack
       points:
@@ -474,14 +524,30 @@ outlines:
           shift: [0.5cx+pad/2, -0.5cy-pad/2]
         - ref: cluster_left_down
           shift: [-0.5cx-pad/2, -0.5cy-pad/2]
-  promicro:
+  _promicro:
     - what: rectangle
       size: [cx, 3cy]
       where:
         - ref.aggregate.parts: [matrix_inner_num, mirror_matrix_inner_num]
           shift: [0.25cx-2, 1.2cy]
           rotate: -90+angle
-  mouse_upper:
+  _xlpromicro:
+    - what: rectangle
+      size: [cx+cpad, 3cy+cpad]
+      where:
+        - ref.aggregate.parts: [matrix_inner_num, mirror_matrix_inner_num]
+          shift: [0.25cx-1, 1.2cy-1]
+          rotate: -90+angle
+  _xlboard:
+    - name: _xlprimary
+    - operation: add
+      name: _xlpadded
+    - operation: add
+      name: _xlchin
+    - operation: add
+      name: _xlpromicro
+      fillet: 2
+  _mouse_upper:
     - what: rectangle
       size: [2, cy-1]
       where:
@@ -500,7 +566,7 @@ outlines:
         - ref: cluster_left_del
           shift: [-0.5cx-hpad-1, -0.5cy+0.4]
       operation: subtract
-  mouse_lower:
+  _mouse_lower:
     - what: rectangle
       size: [2, cy-1]
       where:
@@ -519,33 +585,164 @@ outlines:
         - ref: cluster_center_up
           shift: [-1cx-0.5cx-hpad-1, -0.5cy+0.4]
       operation: subtract
-  combo:
-    - name: primary
+  _board:
+    - name: _primary
     - operation: add
-      name: chin
+      name: _chin
     - operation: add
-      name: secondary
+      name: _secondary
     - operation: add
-      name: padded
+      name: _padded
     - operation: add
-      name: promicro
+      name: _promicro
       fillet: 2
     #- operation: subtract
     #  name: keys
     - operation: add
-      name: mouse_upper
+      name: _mouse_upper
     - operation: add
-      name: mouse_lower
-  preview:
-    - name: combo
+      name: _mouse_lower
+  _mounting:
+    - what: circle
+      radius: screwSize
+      where:
+        ref: [cluster_left_ins]
+        shift: [-258+3, 0.5cy+hpad-3]
+    - what: circle
+      radius: screwSize
+      where:
+        ref: [cluster_left_down]
+        shift: [-258+3, -0.5cy-hpad+3]
+    - what: circle
+      radius: screwSize
+      where:
+        ref: [cluster_left_ins]
+        shift: [-0.5cx-hpad-2-3, 0.5cy+hpad-3]
+    - what: circle
+      radius: screwSize
+      where:
+        ref: [cluster_left_down]
+        shift: [-0.5cx-hpad-2-3, -0.5cy-hpad+3]
+    - what: circle
+      radius: screwSize
+      where:
+        ref: [cluster_left_ins]
+        shift: [-163, 0.5cy+hpad-3]
+    - what: circle
+      radius: screwSize
+      where:
+        ref: [cluster_left_ins]
+        shift: [-107, 0.5cy+hpad-3]
+    - what: circle
+      radius: screwSize
+      where:
+        ref: [space_spacecol_spacerow]
+        shift: [-0.5cx-2.7-0.25, -0.5cy+3.5]
+    - what: circle
+      radius: screwSize
+      where:
+        ref: [mirror_space_spacecol_spacerow]
+        shift: [-0.5cx-2.7-0.25, -0.5cy+3.5]
+    - what: circle
+      radius: screwSize
+      where:
+        ref: [matrix_inner_home]
+        shift: [0.5cx, 0.5cy]
+    - what: circle
+      radius: screwSize
+      where:
+        ref: [mirror_matrix_inner_home]
+        shift: [0.5cx, 0.5cy]
+    - what: circle
+      radius: screwSize
+      where:
+        ref: [cluster_right_ins]
+        shift: [0.5cx-1.5, 0.5cy-1.5]
+    - what: circle
+      radius: screwSize
+      where:
+        ref: [cluster_right_down]
+        shift: [0.5cx-1.5, -0.5cy+1.5]
+  _standoff:
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: [cluster_left_ins]
+        shift: [-258+3, 0.5cy+hpad-3]
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: [cluster_left_down]
+        shift: [-258+3, -0.5cy-hpad+3]
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: [cluster_left_ins]
+        shift: [-0.5cx-hpad-2-3, 0.5cy+hpad-3]
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: [cluster_left_down]
+        shift: [-0.5cx-hpad-2-3, -0.5cy-hpad+3]
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: [cluster_left_ins]
+        shift: [-163, 0.5cy+hpad-3]
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: [cluster_left_ins]
+        shift: [-107, 0.5cy+hpad-3]
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: [space_spacecol_spacerow]
+        shift: [-0.5cx-2.7-0.25, -0.5cy+3.5]
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: [mirror_space_spacecol_spacerow]
+        shift: [-0.5cx-2.7-0.25, -0.5cy+3.5]
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: [matrix_inner_home]
+        shift: [0.5cx, 0.5cy]
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: [mirror_matrix_inner_home]
+        shift: [0.5cx, 0.5cy]
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: [cluster_right_ins]
+        shift: [0.5cx-1.5, 0.5cy-1.5]
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: [cluster_right_down]
+        shift: [0.5cx-1.5, -0.5cy+1.5]
+  _preview:
+    - name: _board
     - operation: subtract
-      name: keys
+      name: _keys
+    - operation: subtract
+      name: _mounting
+    - operation: subtract
+      name: _standoff
+  _xlpreview:
+    - name: _xlboard
+    - operation: subtract
+      name: _board
+      fillet: 2
 pcbs:
   revxl:
     template: kicad8
     outlines:
       main:
-        outline: combo
+        outline: _board
     footprints:
       # Hotswap Choc keys.
       choc_hotswap:
@@ -619,25 +816,25 @@ pcbs:
           P10: col0
           P0:  col1
           P1:  col2
-          P2:  col3
-          P3:  col4
-          P4:  col5
-          P5:  col6
-          P6:  col7
+          P2:  SDA
+          P3:  SCL
+          P4:  col3
+          P5:  col4
+          P6:  col5
+          P9:  col6
+          P12: col7
           P29: row0
           P28: row1
           P27: row2
           P26: row3
           P22: row4
-          P16: row5
-          P15: row6
-          P14: row7
-          P13: row8
-          P12: row9
-          P7:  rotA
-          P8:  rotB
-          P23: SDA
-          P21: SCL
+          P21: row5
+          P16: row6
+          P15: row7
+          P14: row8
+          P13: row9
+          P20: rotA
+          P23: rotB
         where:
         - ref.aggregate.parts: [matrix_inner_num, mirror_matrix_inner_num]
           shift: [-0.35cx+0.25cx-3.5, 1.2cy+1.2]
@@ -692,12 +889,12 @@ pcbs:
         what: mountingholem2
         where:
         - ref: space_spacecol_spacerow
-          shift: [-0.5cx-2.7, -0.5cy+3.5]
+          shift: [-0.5cx-2.7-0.25, -0.5cy+3.5]
       mount_bottom_middle_right:
         what: mountingholem2
         where:
         - ref: mirror_space_spacecol_spacerow
-          shift: [-0.5cx-2.7, -0.5cy+3.5]
+          shift: [-0.5cx-2.7-0.25, -0.5cy+3.5]
       mount_middle_left:
         what: mountingholem2
         where:
@@ -758,3 +955,42 @@ pcbs:
         where:
           - ref: cluster_center_up
             shift: [-1cx-0.5cx-hpad-1, -3.15-1.65]
+cases:
+  _bottom:
+    - name: _board
+      extrude: 1
+  _xlBottom:
+    - name: _xlboard
+      extrude: 1
+  _outerWall:
+    - name: _xlboard
+      extrude: 5.6
+  _innerWall:
+    - name: _board
+      extrude: 5.6
+  _wall:
+    - what: case
+      name: _outerWall
+      operation: add
+    - what: case
+      name: _innerWall
+      operation: subtract
+  _holes:
+    - name: _mounting
+      extrude: 4
+  _standoffs:
+    - name: _standoff
+      extrude: 4
+  case:
+    - what: case
+      name: _standoffs
+      operation: add
+    - what: case
+      name: _holes
+      operation: subtract
+    - what: case
+      name: _xlBottom
+      operation: add
+    - what: case
+      name: _wall
+      operation: add
