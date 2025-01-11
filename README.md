@@ -4,7 +4,7 @@
 
 ![PCB Preview](./PCB.png)
 
-![A 3D Printed Preview](./Preview.png)
+![A 3D Printed Preview](./Placeholder.png)
 
 An in-progress maximalist Reviung-inspired keyboard with RGB LED support, an OLED display, a rotary encoder, and a breakaway arrow cluster.
 
