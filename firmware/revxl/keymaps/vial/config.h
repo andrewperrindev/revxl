@@ -1,0 +1,13 @@
+#pragma once
+
+#define VIAL_KEYBOARD_UID {0xBF, 0xAD, 0xAA, 0xA1, 0x33, 0xD1, 0x3F, 0x17}
+
+#define I2C_DRIVER I2CD1
+#define I2C1_SDA_PIN GP2
+#define I2C1_SCL_PIN GP3
+
+#define OLED_TIMEOUT 120000
+#define OLED_BRIGHTNESS 120
+
+#define RGB_MATRIX_SLEEP
+#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 100  
