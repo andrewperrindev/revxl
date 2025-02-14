@@ -1,5 +1,5 @@
 {
-    "manufacturer": "FlatFootFox",
+    "manufacturer": "QMK",
     "keyboard_name": "revxl",
     "maintainer": "ImStuBTW",
     "url": "https://github.com/imstubtw/revxl",
@@ -24,8 +24,8 @@
     },
     "encoder": {
         "rotary": [{
-            "pin_a": "GP20",
-            "pin_b": "GP23",
+            "pin_a": "GP23",
+            "pin_b": "GP20",
             "resolution": 4
         }]
     },
@@ -120,6 +120,7 @@
     "rgb_matrix": {
         "driver": "ws2812",
         "animations": {
+            "solid_color": true,
             "alphas_mods": true,
             "gradient_up_down": true,
             "gradient_left_right": true,
@@ -148,7 +149,25 @@
             "hue_wave": true,
             "pixel_fractal": true,
             "pixel_flow": true,
-            "pixel_rain": true
+            "pixel_rain": true,
+            "typing_heatmap": true,
+            "digital_rain": true,
+            "solid_reactive_simple": true,
+            "solid_reactive": true,
+            "solid_reactive_wide": true,
+            "solid_reactive_multiwide": true,
+            "solid_reactive_cross": true,
+            "solid_reactive_multicross": true,
+            "solid_reactive_nexus": true,
+            "solid_reactive_multinexus": true,
+            "splash": true,
+            "multisplash": true,
+            "solid_splash": true,
+            "starlight": true,
+            "starlight_dual_hue": true,
+            "starlight_dual_sat": true,
+            "reiverflow": true,
+            "effect_max": true
         },
         "center_point": [90,30],
         "layout": [

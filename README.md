@@ -26,7 +26,7 @@ I needed to order a few additional keycaps from [FK Caps](https://fkcaps.com/?a=
 | EC11 Rotary Encoder          | 1      | $2.50 USD       | https://www.aliexpress.us/item/2255800160725313.html |
 | EC11 20x15mm Knob            | 1      | $3.00 USD       | https://www.aliexpress.us/item/2251832562966356.html |
 | MBK Glow Keycaps             | 1      | $55.00 USD      | https://lowprokb.ca/collections/keycaps/products/mbk-glow-r2-keycap-sets |
-| 6mm x 3mm x 4.3mm Pushbutton | 68     | $2.00 USD       | https://www.aliexpress.us/item/3256801663262003.html |
+| 6mm x 3mm x 4.3mm Pushbutton | 1     | $2.00 USD       | https://www.aliexpress.us/item/3256801663262003.html |
 | Machine Pins                 | 35     | $6.00 USD       | https://www.aliexpress.us/item/3256801663262003.html |
 | Machine Pin Headers          | 39     | $4.00 USD       | https://www.aliexpress.us/item/3256801663262003.html |
 | 4mm M2 Screws                | 8      | $1.00 USD       | https://www.aliexpress.us/item/2255801062616407.html |

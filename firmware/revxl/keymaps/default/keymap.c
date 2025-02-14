@@ -1,8 +1,6 @@
-// Copyright 2023 QMK
-// SPDX-License-Identifier: GPL-2.0-or-later
-
 #include QMK_KEYBOARD_H
 
+// Layer enum. _MAC = 0, _LOWER = 1, etc.
 enum revxl_layers {
     _MAC,
     _LOWER,
@@ -10,16 +8,64 @@ enum revxl_layers {
     _ADJUST,
 };
 
+// Custom macro names.
 enum custom_keycodes {
     KVM_MAC = SAFE_RANGE,
     KVM_WIN
 };
 
+// Macro Bits.
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        // Taps Scroll Lock -> Scroll Lock -> 1
+        // Used for cheap Amazon KVMs to switch inputs.
+        case KVM_MAC:
+            keymap_config.swap_lctl_lgui = keymap_config.swap_rctl_rgui = false;
+            if (record->event.pressed) {
+                register_code(KC_SCRL);
+                wait_ms(50);
+                unregister_code(KC_SCRL);
+                wait_ms(50);
+                register_code(KC_SCRL);
+                wait_ms(50);
+                unregister_code(KC_SCRL);
+                wait_ms(50);
+                register_code(KC_1);
+                wait_ms(50);
+                unregister_code(KC_1);
+            }
+            return false;
+        // Taps Scroll Lock -> Scroll Lock -> 2
+        // Used for cheap Amazon KVMs to switch inputs.
+        case KVM_WIN:
+            keymap_config.swap_lctl_lgui = keymap_config.swap_rctl_rgui = true;
+            if (record->event.pressed) {
+                register_code(KC_SCRL);
+                wait_ms(50);
+                unregister_code(KC_SCRL);
+                wait_ms(50);
+                register_code(KC_SCRL);
+                wait_ms(50);
+                unregister_code(KC_SCRL);
+                wait_ms(50);
+                register_code(KC_2);
+                wait_ms(50);
+                unregister_code(KC_2);
+            }
+            return false;
+        default:
+            return true;
+
+    }
+}
+
+// OLED Bits.
 #ifdef OLED_ENABLE
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_180; }
 
 bool oled_task_user(void) {
+    // Layer 0 (Mac)
     static const char PROGMEM logo_mac[] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0xC0,
     0xF0, 0x7C, 0x1E, 0x0E, 0x0E, 0x1C,
@@ -109,6 +155,7 @@ bool oled_task_user(void) {
     0x00, 0x00,
     };
 
+    // Layer 0 (Win)
     static const char PROGMEM logo_win[] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0xC0,
     0xF0, 0x7C, 0x1E, 0x0E, 0x0E, 0x1C,
@@ -198,6 +245,7 @@ bool oled_task_user(void) {
     0x00, 0x00,
     };
 
+    // Layer 1
     static const char PROGMEM logo_lower[] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0xC0,
     0xF0, 0x7C, 0x1E, 0x0E, 0x0E, 0x1C,
@@ -287,6 +335,7 @@ bool oled_task_user(void) {
     0x00, 0x00,
     };
 
+    // Layer 2
     static const char PROGMEM logo_raise[] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0xC0,
     0xF0, 0x7C, 0x1E, 0x0E, 0x0E, 0x1C,
@@ -376,6 +425,7 @@ bool oled_task_user(void) {
     0x00, 0x00,
     };
 
+    // Layer 3
     static const char PROGMEM logo_adjust[] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0xC0,
     0xF0, 0x7C, 0x1E, 0x0E, 0x0E, 0x1C,
@@ -465,6 +515,7 @@ bool oled_task_user(void) {
     0x00, 0x00,
     };
 
+    // Function to swap the images out based on which layer is being shown.
     switch (get_highest_layer(layer_state)) {
         case _MAC:
             if (keymap_config.swap_lctl_lgui) { oled_write_raw_P(logo_win, sizeof(logo_win)); }
@@ -488,48 +539,9 @@ bool oled_task_user(void) {
 }
 #endif
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case KVM_MAC:
-            keymap_config.swap_lctl_lgui = keymap_config.swap_rctl_rgui = false;
-            if (record->event.pressed) {
-                register_code(KC_SCRL);
-                wait_ms(50);
-                unregister_code(KC_SCRL);
-                wait_ms(50);
-                register_code(KC_SCRL);
-                wait_ms(50);
-                unregister_code(KC_SCRL);
-                wait_ms(50);
-                register_code(KC_1);
-                wait_ms(50);
-                unregister_code(KC_1);
-            }
-            return false;
-        case KVM_WIN:
-            keymap_config.swap_lctl_lgui = keymap_config.swap_rctl_rgui = true;
-            if (record->event.pressed) {
-                register_code(KC_SCRL);
-                wait_ms(50);
-                unregister_code(KC_SCRL);
-                wait_ms(50);
-                register_code(KC_SCRL);
-                wait_ms(50);
-                unregister_code(KC_SCRL);
-                wait_ms(50);
-                register_code(KC_2);
-                wait_ms(50);
-                unregister_code(KC_2);
-            }
-            return false;
-        default:
-            return true;
-
-    }
-}
-
+// The Keymap
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    // Mac Layout
+    // Base Mac Layout
     // ,-----------------------------------------.          ,-----------------------------------------. ,--------------------.
     // |  `   |  1   |  2   |  3   |  4   |  5   |          |  6   |  7   |  8   |  9   |  0   |  -   | |  Ins | Home | PgUp |
     // |------+------+------+------+------+------|          |------+------+------+------+------+------| |------+------+------|
@@ -611,6 +623,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     )
 };
 
+// Encoder Definition.
 #if defined(ENCODER_MAP_ENABLE)
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [_MAC] = { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },

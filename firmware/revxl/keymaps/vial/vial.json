@@ -7,6 +7,18 @@
       "rows": 10,
       "cols": 8
   },
+  "customKeycodes": [
+    {
+      "name": "KVM_Mac",
+      "title": "KVM Mac Switch",
+      "shortName": "KVM\nMAC"
+    },
+    {
+      "name": "KVM_Win",
+      "title": "KVM Win Switch",
+      "shortName": "KVM\nWIN"
+    }
+  ],
   "layouts": {
       "keymap": [
         [
