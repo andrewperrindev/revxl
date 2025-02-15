@@ -4,4 +4,4 @@ The RevXL runs off of QMK. I've got a few funky macros in my default keymap for 
 
 ## Vial Support
 
-There's also a [vial](https://get.vial.today) variant. I'm workin' on it.
+There's also a [vial](https://get.vial.today) variant!
