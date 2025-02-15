@@ -6,7 +6,7 @@ The RevXL is a maximalist Reviung-inspired ergonomic keyboard with per-key RGB L
 
 ## Sponsored By PCBWay
 
-![PCBWay Logo](./images/PCBWay.png)
+![PCBWay Logo](./images/PCBWay-Logo.png)
 
 This project is sponsored by [PCBWay](https://www.pcbway.com). They're the internet's premier PCB fabricator and are a one-stop-shop for all your prototyping needs. They offer PCB fabrication services, 3D printing with a variety of materials, and even PCBA assembly services for those of you who prefer not to solder their own projects. If it can be represented as a design file, you can probably upload it to [PCBWay](https://www.pcbway.com) and receive it a few days later in the mail.
 
