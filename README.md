@@ -18,13 +18,13 @@ PCBWay did a great job manufacturing the RevXL PCB. The order shipped quickly, a
 
 ![KiCAD Preview](./images/PCB.png)
 
-The RevXL was designed with the Ergogen keyboard layout generator. The techniques used here are similar to those I detailed in my [Ergogen tutorial series](https://flatfootfox.com/ergogen-introduction/). The largest new additions were the considerstions needed for the per-key RGB LEDs and the breakaway arrow cluster.
+The RevXL was designed with the Ergogen keyboard layout generator. The techniques used here are similar to those I detailed in my [Ergogen tutorial series](https://flatfootfox.com/ergogen-introduction/). The largest new additions were the considerations needed for the per-key RGB LEDs and the breakaway arrow cluster.
 
 ## Custom Keycaps
 
 ![Keycap Preview](./images/Keycaps.png)
 
-I needed to order a few additional keycaps from [FK Caps](https://fkcaps.com/?a=FlatFootFox) to fill out the arrow key cluster. I decided to use that was an excuse to create a whole custom keycap layout. It's based around a minimalist 3x3 pixel font. You can *just* make out the key glpyhs if you squint.
+I needed to order a few additional keycaps from [FK Caps](https://fkcaps.com/?a=FlatFootFox) to fill out the arrow key cluster. I decided to use that was an excuse to create a whole custom keycap layout. It's based around a minimalist 3x3 pixel font. You can *just* make out the key glyphs if you squint.
 
 ## Build of Materials
 
@@ -49,7 +49,7 @@ I needed to order a few additional keycaps from [FK Caps](https://fkcaps.com/?a=
 
 ![Two of them](./images/RevXL-Two.png)
 
-The [Reviung](https://github.com/gtips/reviung) layout concept was based after gtips' original design. The split thumb design was inspired heavily by Pete Johanson's [revxlp](https://gitlab.com/lpgalaxy/revxlp). For a similar keyboard design avalible in kit form without the arrow keys, please check out 42Keeb's excellent [Rev57LP](https://42keebs.eu/shop/kits/pro-micro-based/rev57lp-50-low-profile-hotswap-ergo-kit/). They've added RGB LED support in the time it took me to create this keyboard.
+The [Reviung](https://github.com/gtips/reviung) layout concept was based after gtips' original design. The split thumb design was inspired heavily by Pete Johanson's [revxlp](https://gitlab.com/lpgalaxy/revxlp). For a similar keyboard design available in kit form without the arrow keys, please check out 42Keeb's excellent [Rev57LP](https://42keebs.eu/shop/kits/pro-micro-based/rev57lp-50-low-profile-hotswap-ergo-kit/). They've added RGB LED support in the time it took me to create this keyboard.
 
 The breakaway arrow cluster concept was inspired by the Afternoon Labs [Breeze](https://www.afternoonlabs.com/breeze/) keyboard.
 
