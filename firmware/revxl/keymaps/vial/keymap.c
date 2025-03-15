@@ -41,6 +41,29 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
+static uint8_t original_effect = 0;
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    switch (get_highest_layer(state)) {
+        case _RAISE:
+            if (original_effect == 0) {
+                original_effect = rgb_matrix_get_mode();
+            }
+            rgb_matrix_mode(RGB_MATRIX_CUSTOM_numpad_effect);
+            break;
+        case _LOWER:
+            break;
+        default: // for any other layers, or the default layer
+            if (original_effect != 0) {
+                rgb_matrix_mode(original_effect);
+                original_effect = 0;
+            }
+            break;
+    }
+
+    return state;
+}
+
 // OLED Bits.
 #ifdef OLED_ENABLE
 

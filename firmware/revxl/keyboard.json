@@ -160,6 +160,7 @@
             "solid_reactive_multicross": true,
             "solid_reactive_nexus": true,
             "solid_reactive_multinexus": true,
+            "solid_reactive_gradient": true,
             "splash": true,
             "multisplash": true,
             "solid_splash": true,
