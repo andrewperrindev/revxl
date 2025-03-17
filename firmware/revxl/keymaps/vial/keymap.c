@@ -12,6 +12,7 @@ enum revxl_layers {
 enum custom_keycodes {
     GRD_SOLID = QK_KB_0,
     GRD_SPLSH,
+    GRD_REACT,
     RBY_DBG
 };
 
@@ -28,6 +29,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case GRD_SPLSH:
             if (record->event.pressed) {
                 rgb_matrix_mode(RGB_MATRIX_SPLASH);
+            }
+            return false;
+        // RGB Effect Shortcut: `solid_reactive_multinexus` (gradient reactive 'pulses')
+        case GRD_REACT:
+            if (record->event.pressed) {
+                rgb_matrix_mode(RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS);
             }
             return false;
         case RBY_DBG:
@@ -50,8 +57,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
                 original_effect = rgb_matrix_get_mode();
             }
             rgb_matrix_mode(RGB_MATRIX_CUSTOM_numpad_effect);
-            break;
-        case _LOWER:
             break;
         default: // for any other layers, or the default layer
             if (original_effect != 0) {
@@ -620,7 +625,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     //        `----------------------------------'          '----------------------------------'        '--------------------'
     //
     [_ADJUST] = LAYOUT(
-        RGB_TOG,GRD_SOLID,GRD_SPLSH,  _______,  _______,  _______,             _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
+        RGB_TOG,GRD_SOLID,GRD_SPLSH,GRD_REACT,  _______,  _______,             _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
         RGB_TOG,  RGB_SPI,  RGB_VAI,  RGB_SAI,  RGB_HUI,  RGB_MODE_FORWARD,    _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,
         CG_TOGG,  RGB_SPD,  RGB_VAD,  RGB_SAD,  RGB_HUD,  RGB_MODE_REVERSE,    _______,  KC_VOLD,  KC_MUTE,  KC_VOLU,  _______,  _______,
         _______,  _______,  _______,  _______,  _______,  _______,             _______,  KC_MPRV,  KC_MPLY,  KC_MNXT,  _______,  _______,                     _______,

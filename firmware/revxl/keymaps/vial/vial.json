@@ -19,6 +19,11 @@
       "shortName": "RGB\nSplash"
     },
     {
+      "name": "GRD_Reactive",
+      "title": "RGB Gradient Reactive",
+      "shortName": "RGB\nReact"
+    },
+    {
       "name": "RBY_Debug",
       "title": "Ruby Debug",
       "shortName": "RBY\nDebug"
