@@ -37,53 +37,55 @@ static bool numpad_effect_run(effect_params_t *params) {
     RGB_MATRIX_USE_LIMITS(led_min, led_max);
 
     for (uint8_t i = led_min; i < led_max; i++) {
-        uint8_t red = 0;
-        uint8_t green = 0;
-        uint8_t blue = 0;
+        uint8_t hue = 0;
 
         switch(i) {
             case NUMPAD0:
-                green += 5;
+                hue += 5;
             case NUMPAD1:
-                green += 5;
+                hue += 5;
             case NUMPAD2:
-                green += 5;
+                hue += 5;
             case NUMPAD3:
-                green += 10;
+                hue += 5;
             case NUMPAD4:
-                green += 10;
+                hue += 5;
             case NUMPAD5:
-                green += 10;
+                hue += 5;
             case NUMPAD6:
-                green += 15;
+                hue += 5;
             case NUMPAD7:
-                green += 15;
+                hue += 5;
             case NUMPAD8:
-                green += 15;
+                hue += 5;
             case NUMPAD9:
-                red = 255;
+                hue += 5;
                 break;
             case NUMPAD_DOT:
-                green = 128;
+                hue = 91;
                 break;
             case NUMPAD_ENT:
-                red = 128;
-                blue = 128;
+                hue = 212;
                 break;
             case ARROW_U:
             case ARROW_L:
             case ARROW_D:
             case ARROW_R:
-                blue = 128;
+                hue = 170;
                 break;
             case HOME_C:
             case END_C:
-                green = 255;
+                hue = 85;
                 break;
         }
 
-        if (red > 0 || green > 0 || blue > 0) {
-            rgb_matrix_set_color(i, red, green, blue);
+        if (hue > 0) {
+            hsv_t hsv = {hue, 255, 255};
+            if (hsv.v > rgb_matrix_get_val()) {
+                hsv.v = rgb_matrix_get_val();
+            }
+            rgb_t rgb = hsv_to_rgb(hsv);
+            rgb_matrix_set_color(i, rgb.r, rgb.g, rgb.b);
         }
     }
 
