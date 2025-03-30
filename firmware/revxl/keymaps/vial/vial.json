@@ -9,14 +9,24 @@
   },
   "customKeycodes": [
     {
-      "name": "KVM_Mac",
-      "title": "KVM Mac Switch",
-      "shortName": "KVM\nMAC"
+      "name": "GRD_Solid",
+      "title": "RGB Solid Gradient",
+      "shortName": "RGB\nSolid"
     },
     {
-      "name": "KVM_Win",
-      "title": "KVM Win Switch",
-      "shortName": "KVM\nWIN"
+      "name": "GRD_Splash",
+      "title": "RGB Gradient Splash",
+      "shortName": "RGB\nSplash"
+    },
+    {
+      "name": "GRD_Reactive",
+      "title": "RGB Gradient Reactive",
+      "shortName": "RGB\nReact"
+    },
+    {
+      "name": "RBY_Debug",
+      "title": "Ruby Debug",
+      "shortName": "RBY\nDebug"
     }
   ],
   "layouts": {
