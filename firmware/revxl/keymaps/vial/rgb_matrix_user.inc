@@ -21,6 +21,14 @@ const static uint8_t NUMPAD9 = 55;
 const static uint8_t NUMPAD_DOT = 37;
 const static uint8_t NUMPAD_ENT = 36;
 
+const static uint8_t NUMPAD_PLUSA = 44;
+const static uint8_t NUMPAD_MINUSA = 45;
+const static uint8_t NUMPAD_PLUSB = 35;
+const static uint8_t NUMPAD_MINUSB = 34;
+const static uint8_t NUMPAD_MULT = 47;
+const static uint8_t NUMPAD_DIV = 46;
+const static uint8_t NUMPAD_EQL = 56;
+
 const static uint8_t ARROW_U = 9;
 const static uint8_t ARROW_L = 13;
 const static uint8_t ARROW_D = 14;
@@ -65,7 +73,22 @@ static bool numpad_effect_run(effect_params_t *params) {
                 hue = 91;
                 break;
             case NUMPAD_ENT:
+            case NUMPAD_EQL:
                 hue = 212;
+                break;
+            case NUMPAD_PLUSA:
+            case NUMPAD_PLUSB:
+                hue = 88;
+                break;
+            case NUMPAD_MINUSA:
+            case NUMPAD_MINUSB:
+                hue = 5;
+                break;
+            case NUMPAD_MULT:
+                hue = 50;
+                break;
+            case NUMPAD_DIV:
+                hue = 170;
                 break;
             case ARROW_U:
             case ARROW_L:
